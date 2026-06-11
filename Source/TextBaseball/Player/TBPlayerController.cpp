@@ -1,4 +1,4 @@
-// TBPlayerController.cpp
+ï»¿// TBPlayerController.cpp
 
 
 #include "Player/TBPlayerController.h"
@@ -61,10 +61,10 @@ void ATBPlayerController::SetChatMessageString(const FString& InChatMessageStrin
 
 void ATBPlayerController::PrintChatMessageString(const FString& InChatMessageString)
 {
-	// TextBaseball.h ¿¡¼­ ¸¸µç MyPrintString() ÇÔ¼ö·Î ´ëÃ¼
+	// TextBaseball.h ì—ì„œ ë§Œë“  MyPrintString() í•¨ìˆ˜ë¡œ ëŒ€ì²´
 	//UKismetSystemLibrary::PrintString(this, ChatMessageString, true, true, FLinearColor::Red, 5.0f);
 
-	// ·Î±ë¿ë ÄÚµå
+	// ë¡œê¹…ìš© ì½”ë“œ
 	/*FString NetModeString = TextBaseballFunctionLibrary::GetNetModeString(this);
 	FString CombinedMessageString = FString::Printf(TEXT("%s: %s"), *NetModeString, *InChatMessageString);
 	TextBaseballFunctionLibrary::MyPrintString(this, CombinedMessageString, 10.f);*/
@@ -77,6 +77,11 @@ void ATBPlayerController::GetLifetimeReplicatedProps(TArray<class FLifetimePrope
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ThisClass, NotificationText);
+}
+
+FString ATBPlayerController::ReEnterGuideMessageString()
+{
+	return TEXT("ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”.");
 }
 
 void ATBPlayerController::ClientRPCPrintChatMessageString_Implementation(const FString& InChatMessageString)
@@ -93,7 +98,7 @@ void ATBPlayerController::ServerRPCPrintChatMessageString_Implementation(const F
 		{
 			TBPlayerController->ClientRPCPrintChatMessageString(InChatMessageString);
 		}
-	}*/ // ATBGameModeBase::PrintChatMessageString() ÀÌ°÷À¸·Î ¿Å°ÜÁü
+	}*/ // ATBGameModeBase::PrintChatMessageString() ì´ê³³ìœ¼ë¡œ ì˜®ê²¨ì§
 
 	AGameModeBase* GM = UGameplayStatics::GetGameMode(this);
 	if (IsValid(GM) == true)

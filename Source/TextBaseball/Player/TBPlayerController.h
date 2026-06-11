@@ -34,6 +34,8 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
+	FString ReEnterGuideMessageString();
+
 protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UTBChatInput> ChatInputWidgetClass;

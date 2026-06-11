@@ -185,6 +185,7 @@ void ATBGameModeBase::PrintChatMessageString(ATBPlayerController* InChattingPlay
 				}
 			}
 		}
+		InChattingPlayerController->ClientRPCPrintChatMessageString(InChattingPlayerController->ReEnterGuideMessageString());
 	}
 }
 
